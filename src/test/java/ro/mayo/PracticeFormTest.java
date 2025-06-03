@@ -183,7 +183,7 @@ public class PracticeFormTest {
         WebElement firstName = driver.findElement(By.id("firstName"));
         Assertions.assertTrue(firstName.getCssValue("background-image").contains("stroke='%23dc3545'")); // red border
         WebElement lastName = driver.findElement(By.id("lastName"));
-        Assertions.assertTrue(firstName.getCssValue("background-image").contains("stroke='%23dc3545'")); // red border
+        Assertions.assertTrue(lastName.getCssValue("background-image").contains("stroke='%23dc3545'")); // red border
 
         // Verify all gender labels are red (rgba structure)
         List<WebElement> genderLabels = driver.findElements(By.xpath("//label[contains(@for, 'gender-radio')]"));
