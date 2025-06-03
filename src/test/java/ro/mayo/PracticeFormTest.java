@@ -14,6 +14,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ro.mayo.pages.FormPage;
 import ro.mayo.pages.HomePage;
+import ro.mayo.pages.PracticeFormPage;
 
 import java.time.Duration;
 import java.util.List;
@@ -73,9 +74,13 @@ import java.util.List;
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
             HomePage homePage = new HomePage(driver);
-            homePage.clickFormCard();
-            FormPage formPage = new FormPage(driver);
-            formPage.clickOnPracticeForm();
+            FormPage formPage = homePage.clickFormCard();
+            PracticeFormPage practiceFormPage = formPage.clickOnPracticeForm();
+
+
+//            homePage.clickFormCard();
+//            FormPage formPage = new FormPage(driver);
+//            formPage.clickOnPracticeForm();
 
             // Close all the visible popup ads
             ((JavascriptExecutor) driver).executeScript("document.querySelectorAll('iframe, .advertisement').forEach(el => el.remove());");
