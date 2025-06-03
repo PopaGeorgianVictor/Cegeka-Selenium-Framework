@@ -3,8 +3,6 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-<<<<<<< HEAD
     <groupId>org.example</groupId>
     <artifactId>SeleniumFramework</artifactId>
 =======
@@ -19,7 +17,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-<<<<<<< HEAD
     <build>
         <plugins>
             <plugin>
@@ -65,8 +62,17 @@
             <version>5.13.0</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.13.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.13.0</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
-
-=======
->>>>>>> e6ca8ff2568318e9c150bfdd5ee8458e709edb9a
 </project>
