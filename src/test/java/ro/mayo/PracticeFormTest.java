@@ -12,6 +12,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import ro.mayo.pages.FormPage;
+import ro.mayo.pages.HomePage;
 
 import java.time.Duration;
 import java.util.List;
@@ -70,14 +72,10 @@ import java.util.List;
             //Define a wait object to be used anywhere in the test
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
-            //Navigate to the Forms page
-            WebElement formsCard = driver.findElement(By.xpath("//div[@class='card-body']/h5[text()='Forms']"));
-            // Scroll into view and click via JavaScript because it is blocked by an add
-            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true); arguments[0].click();", formsCard);
-
-            //Navigate to the Practice Form page in the left menu
-            WebElement practiceForm = driver.findElement(By.xpath("//span[text() = \"Practice Form\"]"));
-            practiceForm.click();
+            HomePage homePage = new HomePage(driver);
+            homePage.clickFormCard();
+            FormPage formPage = new FormPage(driver);
+            formPage.clickOnPracticeForm();
 
             // Close all the visible popup ads
             ((JavascriptExecutor) driver).executeScript("document.querySelectorAll('iframe, .advertisement').forEach(el => el.remove());");
@@ -143,11 +141,6 @@ import java.util.List;
 
             //Define a wait object to be used anywhere in the test
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
-            //Navigate to the Forms page
-            WebElement formsCard = driver.findElement(By.xpath("//div[@class='card-body']/h5[text()='Forms']"));
-            // Scroll into view and click via JavaScript because it is blocked by an add
-            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true); arguments[0].click();", formsCard);
 
             //Navigate to the Practice Form page in the left menu
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text() = \"Practice Form\"]")));
