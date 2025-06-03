@@ -1,14 +1,10 @@
 package ro.mayo;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -77,60 +73,33 @@ import java.util.List;
             FormPage formPage = homePage.clickFormCard();
             PracticeFormPage practiceFormPage = formPage.clickOnPracticeForm();
 
-
-//            homePage.clickFormCard();
-//            FormPage formPage = new FormPage(driver);
-//            formPage.clickOnPracticeForm();
-
             // Close all the visible popup ads
             ((JavascriptExecutor) driver).executeScript("document.querySelectorAll('iframe, .advertisement').forEach(el => el.remove());");
 
             // Add first name and last name
-            WebElement firstName = driver.findElement(By.id("firstName"));
-            firstName.sendKeys("John");
-            WebElement lastName = driver.findElement(By.id("lastName"));
-            lastName.sendKeys("Smith");
+            practiceFormPage.enterFirstName("John");
+            practiceFormPage.enterLastName("Smith");
 
             // Add email address
-            WebElement email = driver.findElement(By.id("userEmail"));
-            email.sendKeys("john.smith@gmail.com");
+            practiceFormPage.enterEmail("john.smith@yahoo.com");
 
             // Select the gender
-            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//label[@for='gender-radio-1']")));
-            WebElement genderRadio = driver.findElement(By.xpath("//input[@value='Male']"));
-            WebElement gender = driver.findElement(By.xpath("//label[@for='gender-radio-1']"));
-            gender.click();
-            Assertions.assertTrue(genderRadio.isSelected());
+            practiceFormPage.selectGenderRadioMale();
 
             // Add a valid phone number
-            WebElement mobileNumber = driver.findElement(By.id("userNumber"));
-            mobileNumber.sendKeys("1234567890");
+            practiceFormPage.enterPhoneNumber("0724245667");
 
             // Select a date of birth
-            WebElement dateOfBirthPicker = driver.findElement(By.id("dateOfBirthInput"));
-            dateOfBirthPicker.click();
-            WebElement monthElement = driver.findElement(By.className("react-datepicker__month-select"));
-            Select month = new Select(monthElement);
-            WebElement yearElement = driver.findElement(By.className("react-datepicker__year-select"));
-            Select year = new Select(yearElement);
-            month.selectByVisibleText("January");
-            year.selectByValue("1999");
-            WebElement day = driver.findElement(By.xpath("//div[@class='react-datepicker__week']/div[text()='12']"));
-            day.click();
+            practiceFormPage.selectDateOfBirth("12", "January", "1999");
 
             // Upload a picture
-            WebElement picture = driver.findElement(By.id("uploadPicture"));
-            picture.sendKeys("C:\\Users\\georgian.popa\\OneDrive - EOS Technology Solutions GmbH\\Desktop\\Curs\\curs\\SeleniumFramework\\src\\test\\resources\\Screenshot_7.jpg");
+            practiceFormPage.uploadPicture("C:\\Users\\georgian.popa\\OneDrive - EOS Technology Solutions GmbH\\Desktop\\Curs\\curs\\SeleniumFramework\\src\\test\\resources\\Screenshot_7.jpg");
 
             // Submit the form
-            WebElement submit = driver.findElement(By.id("submit"));
-            submit.submit();
+            practiceFormPage.submit();
 
             // Verify the registration was successful
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("modal-title")));
-            WebElement confirmationMessage = driver.findElement(By.className("modal-title"));
-            Assertions.assertTrue(confirmationMessage.isDisplayed());
-            Assertions.assertEquals("Thanks for submitting the form", confirmationMessage.getText());
+            practiceFormPage.verifyConfirmationMsg();
 
             // Close the modal element
             WebElement closeButton = driver.findElement(By.id("closeLargeModal"));
