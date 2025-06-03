@@ -4,8 +4,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+<<<<<<< HEAD
     <groupId>org.example</groupId>
     <artifactId>SeleniumFramework</artifactId>
+=======
+    <groupId>ro.mayo</groupId>
+    <artifactId>JavaCourse</artifactId>
+>>>>>>> e6ca8ff2568318e9c150bfdd5ee8458e709edb9a
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -14,6 +19,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+<<<<<<< HEAD
     <build>
         <plugins>
             <plugin>
@@ -61,4 +67,6 @@
         </dependency>
     </dependencies>
 
+=======
+>>>>>>> e6ca8ff2568318e9c150bfdd5ee8458e709edb9a
 </project>

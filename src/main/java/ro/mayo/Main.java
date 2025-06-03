@@ -14,4 +14,8 @@ public class Main {
             System.out.println("i = " + i);
         }
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> e6ca8ff2568318e9c150bfdd5ee8458e709edb9a
 }
